@@ -10,17 +10,21 @@ class ImGuiExample(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
     generators = "CMakeDeps", "CMakeToolchain"
 
+    default_options = {
+        "grpc/*:cpp_plugin": True,
+        "grpc/*:csharp_ext": False,
+        "grpc/*:csharp_plugin": False,
+        "grpc/*:node_plugin": False,
+        "grpc/*:objective_c_plugin": False,
+        "grpc/*:php_plugin": False,
+        "grpc/*:python_plugin": False,
+        "grpc/*:ruby_plugin": False,
+        "grpc/*:otel_plugin": False,
+    }
 
     def requirements(self):
         self.requires("spdlog/1.17.0")
-        
-        
-    def system_requirements(self):
-        packages = [
-            "pkg-config"
-        ]
-
-        Apt(self).install(packages)
+        self.requires("grpc/1.84.0")
 
 
     def layout(self):
