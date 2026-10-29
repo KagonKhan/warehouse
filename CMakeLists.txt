@@ -16,37 +16,12 @@ find_package(gRPC CONFIG REQUIRED)
 
 
 set(PROTO_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/learn")
-set(PROTO_FILE "${PROTO_DIR}/learn.proto")
 set(GENERATED_DIR "${CMAKE_CURRENT_BINARY_DIR}/generated")
 
 file(MAKE_DIRECTORY "${GENERATED_DIR}")
 
-set(PROTO_SRCS
-    "${GENERATED_DIR}/learn.pb.cc"
-    "${GENERATED_DIR}/learn.grpc.pb.cc"
-)
-
-set(PROTO_HDRS
-    "${GENERATED_DIR}/learn.pb.h"
-    "${GENERATED_DIR}/learn.grpc.pb.h"
-)
-
-add_custom_command(
-    OUTPUT ${PROTO_SRCS} ${PROTO_HDRS}
-    COMMAND $<TARGET_FILE:protobuf::protoc>
-    ARGS
-        "--proto_path=${PROTO_DIR}"
-        "--cpp_out=${GENERATED_DIR}"
-        "--grpc_out=${GENERATED_DIR}"
-        "--plugin=protoc-gen-grpc=$<TARGET_FILE:gRPC::grpc_cpp_plugin>"
-        "${PROTO_FILE}"
-    DEPENDS "${PROTO_FILE}"
-    VERBATIM
-)
-
 add_library(proto_generated STATIC
-    ${PROTO_SRCS}
-    ${PROTO_HDRS}
+    "${PROTO_DIR}/learn.proto"
 )
 
 target_include_directories(proto_generated
@@ -57,6 +32,22 @@ target_link_libraries(proto_generated
     PUBLIC
         protobuf::libprotobuf
         gRPC::grpc++
+)
+
+protobuf_generate(
+    TARGET proto_generated
+    LANGUAGE cpp
+    IMPORT_DIRS "${PROTO_DIR}"
+    PROTOC_OUT_DIR "${GENERATED_DIR}"
+)
+
+protobuf_generate(
+    TARGET proto_generated
+    LANGUAGE grpc
+    GENERATE_EXTENSIONS .grpc.pb.h .grpc.pb.cc
+    PLUGIN "protoc-gen-grpc=$<TARGET_FILE:gRPC::grpc_cpp_plugin>"
+    IMPORT_DIRS "${PROTO_DIR}"
+    PROTOC_OUT_DIR "${GENERATED_DIR}"
 )
 
 # =======================    PROJECT    ==========================
