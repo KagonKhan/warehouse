@@ -63,14 +63,18 @@ target_link_libraries(proto_generated
 
 add_executable(learn_server 
     src/learn/server.cpp
+    src/learn/server_run.cpp
 )
 
 add_executable(learn_client
     src/learn/client.cpp
+    src/learn/client_run.cpp
 )
 
 target_link_libraries(learn_server PRIVATE proto_generated)
 target_link_libraries(learn_client PRIVATE proto_generated)
+target_compile_features(learn_client PRIVATE cxx_std_23)
+target_compile_features(learn_server PRIVATE cxx_std_23)
 
 # add_executable(warehouse
 #     src/main.cpp

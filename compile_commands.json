@@ -19,8 +19,20 @@
 },
 {
   "directory": "/home/sszynk/projects/warehouse-glue/build/Release",
+  "command": "/usr/bin/c++ -DCARES_STATICLIB -I/home/sszynk/projects/warehouse-glue/build/Release/generated -isystem /home/sszynk/.conan2/p/b/proto25c43679c1fe5/p/include -isystem /home/sszynk/.conan2/p/b/zlib9ca239cc0f4e8/p/include -isystem /home/sszynk/.conan2/p/b/absei93cdb042e39d7/p/include -isystem /home/sszynk/.conan2/p/b/grpc30960973e29d2/p/include -m64 -O3 -DNDEBUG -std=c++23 -o CMakeFiles/learn_server.dir/src/learn/server_run.cpp.o -c /home/sszynk/projects/warehouse-glue/src/learn/server_run.cpp",
+  "file": "/home/sszynk/projects/warehouse-glue/src/learn/server_run.cpp",
+  "output": "CMakeFiles/learn_server.dir/src/learn/server_run.cpp.o"
+},
+{
+  "directory": "/home/sszynk/projects/warehouse-glue/build/Release",
   "command": "/usr/bin/c++ -DCARES_STATICLIB -I/home/sszynk/projects/warehouse-glue/build/Release/generated -isystem /home/sszynk/.conan2/p/b/proto25c43679c1fe5/p/include -isystem /home/sszynk/.conan2/p/b/zlib9ca239cc0f4e8/p/include -isystem /home/sszynk/.conan2/p/b/absei93cdb042e39d7/p/include -isystem /home/sszynk/.conan2/p/b/grpc30960973e29d2/p/include -m64 -O3 -DNDEBUG -std=c++23 -o CMakeFiles/learn_client.dir/src/learn/client.cpp.o -c /home/sszynk/projects/warehouse-glue/src/learn/client.cpp",
   "file": "/home/sszynk/projects/warehouse-glue/src/learn/client.cpp",
   "output": "CMakeFiles/learn_client.dir/src/learn/client.cpp.o"
+},
+{
+  "directory": "/home/sszynk/projects/warehouse-glue/build/Release",
+  "command": "/usr/bin/c++ -DCARES_STATICLIB -I/home/sszynk/projects/warehouse-glue/build/Release/generated -isystem /home/sszynk/.conan2/p/b/proto25c43679c1fe5/p/include -isystem /home/sszynk/.conan2/p/b/zlib9ca239cc0f4e8/p/include -isystem /home/sszynk/.conan2/p/b/absei93cdb042e39d7/p/include -isystem /home/sszynk/.conan2/p/b/grpc30960973e29d2/p/include -m64 -O3 -DNDEBUG -std=c++23 -o CMakeFiles/learn_client.dir/src/learn/client_run.cpp.o -c /home/sszynk/projects/warehouse-glue/src/learn/client_run.cpp",
+  "file": "/home/sszynk/projects/warehouse-glue/src/learn/client_run.cpp",
+  "output": "CMakeFiles/learn_client.dir/src/learn/client_run.cpp.o"
 }
 ]
